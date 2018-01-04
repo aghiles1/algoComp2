@@ -9,11 +9,20 @@ public class Algo {
      *nommé "monexemple.txt".
      * @param args
      */
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) throws Exception {
         int binSize = 5;
         List<Integer> itemsSizes = new ArrayList<>();
-
-        AbstractBP currentAlgo = new BestFit(5, itemsSizes); // ou autre
+        itemsSizes.add(50);
+        itemsSizes.add(70);
+        itemsSizes.add(50);
+        itemsSizes.add(20);
+        itemsSizes.add(40);
+        itemsSizes.add(20);
+        itemsSizes.add(50);
+        itemsSizes.add(10);
+        itemsSizes.add(60);
+        AbstractBP currentAlgo = new NextFit(100 , itemsSizes); // ou autre
+        currentAlgo.run();
+        System.out.println(" Size  : "+currentAlgo.getBins().size() );
     }
 }

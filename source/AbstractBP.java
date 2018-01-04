@@ -14,5 +14,9 @@ public abstract class AbstractBP
         bins = new ArrayList<>();
     }
 
-    public abstract void run();
+    public abstract void run() throws Exception;
+
+    public List<Integer> getBins() {
+        return bins;
+    }
 }
