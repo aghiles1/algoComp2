@@ -1,7 +1,12 @@
+import Algos.AbstractBP;
+import Algos.FirstFit;
+import Algos.NextFit;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Algo {
+public class Algo
+{
 
     /**
      * exécution des 5 algorithmes sur les exemples fournis (exemple100.txt,

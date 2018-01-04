@@ -1,8 +1,10 @@
+package Algos;
+
 import java.util.List;
 
-public class BestFit extends AbstractBP
+public class WorstFit extends AbstractBP
 {
-    public BestFit(int binSize, List<Integer> itemsSizes)
+    public WorstFit(int binSize, List<Integer> itemsSizes)
     {
         super(binSize, itemsSizes);
     }
