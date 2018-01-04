@@ -10,7 +10,7 @@ public abstract class AbstractBP
     public AbstractBP(int binSize, List<Integer> itemsSizes)
     {
         this.binSize = binSize;
-        this.itemsSizes = itemsSizes;
+        this.itemsSizes = new ArrayList<>(itemsSizes);
         bins = new ArrayList<>();
     }
 

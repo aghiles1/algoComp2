@@ -9,9 +9,10 @@ public class Algo {
      *nommé "monexemple.txt".
      * @param args
      */
-    public static void main(String[] args) throws Exception {
-        int binSize = 5;
+    public static void main(String[] args) throws Exception
+    {
         List<Integer> itemsSizes = new ArrayList<>();
+
         itemsSizes.add(50);
         itemsSizes.add(70);
         itemsSizes.add(50);
@@ -21,8 +22,54 @@ public class Algo {
         itemsSizes.add(50);
         itemsSizes.add(10);
         itemsSizes.add(60);
-        AbstractBP currentAlgo = new NextFit(100 , itemsSizes); // ou autre
-        currentAlgo.run();
-        System.out.println(" Size  : "+currentAlgo.getBins().size() );
+
+        List<AbstractBP> algos = new ArrayList<>();
+
+        algos.add(new NextFit(100 , itemsSizes));
+        algos.add(new FirstFit(100 , itemsSizes));
+
+        printItemsSizes(itemsSizes);
+        runAll(algos);
+    }
+
+    public static void printItemsSizes(List<Integer> itemsSizes)
+    {
+        System.out.print("Items : ");
+
+        for(Integer integer : itemsSizes)
+        {
+            System.out.print(integer + "  ");
+        }
+
+        System.out.println("\n");
+    }
+
+    public static void printBin(List<Integer> bins)
+    {
+        System.out.print("Size : " + bins.size() + " et Bins = ");
+
+        for(Integer integer : bins)
+        {
+            System.out.print(integer + "  ");
+        }
+
+        System.out.println();
+    }
+
+    public static void runAll(List<AbstractBP> algos)
+    {
+        for(AbstractBP currentAlgo : algos)
+        {
+            try
+            {
+                currentAlgo.run();
+                printBin(currentAlgo.getBins());
+            }
+
+            catch (Exception ex)
+            {
+                System.out.println(ex.getMessage());
+            }
+        }
     }
 }
