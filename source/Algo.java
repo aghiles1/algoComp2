@@ -16,6 +16,13 @@ public class Algo
      */
     public static void main(String[] args) throws Exception
     {
+        /*
+        Parser parser = new Parser("exemples/exemple1000.txt");
+
+        System.out.println(parser.getBinSize());
+        List<Integer> itemsSizes = parser.getItemsSizes();
+        */
+
         List<Integer> itemsSizes = new ArrayList<>();
 
         itemsSizes.add(50);
