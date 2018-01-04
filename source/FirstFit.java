@@ -1,5 +1,3 @@
-package Algos;
-
 import java.util.List;
 
 public class FirstFit extends AbstractBP

@@ -1,5 +1,3 @@
-package Algos;
-
 import java.util.List;
 
 public class AlmostWorst extends AbstractBP
@@ -9,8 +7,8 @@ public class AlmostWorst extends AbstractBP
         super(binSize, itemsSizes);
     }
 
-    @Override
-    public void run()
+
+    public void run() throws Exception
     {
 
     }

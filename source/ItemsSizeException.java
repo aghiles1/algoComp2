@@ -1,5 +1,3 @@
-package Algos;
-
 public class ItemsSizeException extends Exception
 {
     public ItemsSizeException()

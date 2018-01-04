@@ -1,5 +1,3 @@
-package Algos;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,10 +16,8 @@ public class NextFit extends AbstractBP
     @Override
     public void run() throws Exception {
         bins = new ArrayList<>();
+        bins.add(binSize);
         for (int i=0;i < itemsSizes.size(); i++){
-            if (bins.isEmpty()){
-                bins.add(binSize);
-            }
             if (binSize < itemsSizes.get(i)){
                 throw new ItemsSizeException();
             }

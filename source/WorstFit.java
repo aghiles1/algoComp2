@@ -1,4 +1,3 @@
-package Algos;
 
 import java.util.List;
 
@@ -9,8 +8,7 @@ public class WorstFit extends AbstractBP
         super(binSize, itemsSizes);
     }
 
-    @Override
-    public void run()
+    public void run() throws Exception
     {
 
     }
