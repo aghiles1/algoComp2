@@ -8,6 +8,11 @@ public class NextFit extends AbstractBP
         super(binSize, itemsSizes);
     }
 
+
+    /**
+     * complexité : o(n) ou n est la taille de itemsSizes
+     * @throws Exception
+     */
     @Override
     public void run() throws Exception {
         bins = new ArrayList<>();
