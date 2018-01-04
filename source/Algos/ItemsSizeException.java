@@ -1,8 +1,8 @@
 package Algos;
 
-public class itemsSizeException extends Exception
+public class ItemsSizeException extends Exception
 {
-    public itemsSizeException()
+    public ItemsSizeException()
     {
         super("the item size is greater then the bin size !!!");
     }

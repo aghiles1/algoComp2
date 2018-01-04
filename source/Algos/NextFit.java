@@ -23,7 +23,7 @@ public class NextFit extends AbstractBP
                 bins.add(binSize);
             }
             if (binSize < itemsSizes.get(i)){
-                throw new itemsSizeException();
+                throw new ItemsSizeException();
             }
             if (bins.get(bins.size()-1) > itemsSizes.get(i)){
                 bins.set(bins.size()-1,bins.get(bins.size()-1)-itemsSizes.get(i));

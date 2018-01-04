@@ -35,7 +35,7 @@ public class FirstFit extends AbstractBP
 
             if(currentItemSize > binSize)
             {
-                throw new itemsSizeException();
+                throw new ItemsSizeException();
             }
 
             int binIndex = getIndexToSet(currentItemSize);
