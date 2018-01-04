@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Algo {
 
     /**
@@ -6,7 +9,11 @@ public class Algo {
      *nommé "monexemple.txt".
      * @param args
      */
-    public static void main(String[] args) {
-        System.out.println("Algo");
+    public static void main(String[] args)
+    {
+        int binSize = 5;
+        List<Integer> itemsSizes = new ArrayList<>();
+
+        AbstractBP currentAlgo = new BestFit(5, itemsSizes); // ou autre
     }
 }
