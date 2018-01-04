@@ -1,3 +1,3 @@
-public class WorstFit {
+public class WorstFit extends AbstractBP {
 
 }

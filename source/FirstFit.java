@@ -1,2 +1,2 @@
-public class FirstFit {
+public class FirstFit extends AbstractBP {
 }

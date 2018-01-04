@@ -1,2 +1,2 @@
-public class AlmostWorst {
+public class AlmostWorst extends AbstractBP {
 }
