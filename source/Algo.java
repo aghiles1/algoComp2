@@ -1,4 +1,7 @@
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,72 +16,73 @@ public class Algo
      */
     public static void main(String[] args) throws Exception
     {
-        /*
-        Parser parser = new Parser("exemples/exemple1000.txt");
+/*
+        Parser parser = new Parser("exemples/exemple100.txt");
 
-        System.out.println(parser.getBinSize());
-        List<Integer> itemsSizes = parser.getItemsSizes();
-        */
+        int binSize = parser.getBinSize();
+        List<Item> items = parser.getItems();*/
 
-        List<Integer> itemsSizes = new ArrayList<>();
+        List<Item> items = new ArrayList<>();
 
-        itemsSizes.add(50);
-        itemsSizes.add(70);
-        itemsSizes.add(50);
-        itemsSizes.add(20);
-        itemsSizes.add(40);
-        itemsSizes.add(20);
-        itemsSizes.add(50);
-        itemsSizes.add(10);
-        itemsSizes.add(60);
+        items.add(new Item(50, 1));
+        items.add(new Item(70, 2));
+        items.add(new Item(50, 3));
+        items.add(new Item(20, 4));
+        items.add(new Item(40, 5));
+        items.add(new Item(20, 6));
+        items.add(new Item(50, 7));
+        items.add(new Item(10, 8));
+        items.add(new Item(60, 9));
+
+        int binSize = 100;
 
         List<AbstractBP> algos = new ArrayList<>();
 
-        algos.add(new NextFit(100 , itemsSizes));
-        algos.add(new FirstFit(100 , itemsSizes));
+        algos.add(new NextFit(binSize , items));
+        algos.add(new FirstFit(binSize , items));
 
-        printItemsSizes(itemsSizes);
-        runAll(algos);
+        runAndSave("exemples/output100.txt", items, binSize, algos);
     }
 
-    public static void printItemsSizes(List<Integer> itemsSizes)
+    public static void runAndSave(String fileName, List<Item> items, int binSize, List<AbstractBP> algos) throws IOException
     {
-        System.out.print("Items : ");
+        FileWriter fileWriter = new FileWriter(System.getProperties().get("user.dir") + "/" + fileName);
+        BufferedWriter bufWriter = new BufferedWriter(fileWriter);
 
-        for(Integer integer : itemsSizes)
+        String text = "Max capacity of the bins : " + binSize + "\n";
+
+        for(Item item : items)
         {
-            System.out.print(integer + "  ");
+            text += "\n" + item.toString();
         }
 
-        System.out.println("\n");
-    }
-
-    public static void printBin(List<Integer> bins)
-    {
-        System.out.print("Size : " + bins.size() + " et Bins = ");
-
-        for(Integer integer : bins)
-        {
-            System.out.print(integer + "  ");
-        }
-
-        System.out.println();
-    }
-
-    public static void runAll(List<AbstractBP> algos)
-    {
         for(AbstractBP currentAlgo : algos)
         {
+            text += "\n\n";
+            text += currentAlgo.getName() + " : ";
+
             try
             {
                 currentAlgo.run();
-                printBin(currentAlgo.getBins());
+                text += "Size = " + currentAlgo.getBins().size() + "\n\n";
+
+                List<Bin> bins = currentAlgo.getBins();
+
+                for(Bin bin : bins)
+                {
+                    text += bin + "\n";
+                }
             }
 
             catch (Exception ex)
             {
-                System.out.println(ex.getMessage());
+                text += "Exception : " + ex.getMessage() + "\n";
             }
         }
+
+        bufWriter.write(text);
+
+        bufWriter.close();
+        fileWriter.close();
     }
 }

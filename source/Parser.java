@@ -1,17 +1,16 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Parser
 {
     private int binSize;
-    private List<Integer> itemsSizes;
+    private List<Item> items;
 
     public Parser(String fileName) throws Exception
     {
-        itemsSizes = new ArrayList<>();
+        items = new ArrayList<>();
 
         FileReader fileReader = new FileReader(System.getProperties().get("user.dir") + "/" + fileName);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -43,7 +42,7 @@ public class Parser
                         string = string.replace(".", "");
                     }
 
-                    itemsSizes.add(Integer.parseInt(string));
+                    this.items.add(new Item(Integer.parseInt(string), this.items.size() + 1));
                 }
             }
         }
@@ -57,8 +56,8 @@ public class Parser
         return binSize;
     }
 
-    public List<Integer> getItemsSizes()
+    public List<Item> getItems()
     {
-        return itemsSizes;
+        return items;
     }
 }

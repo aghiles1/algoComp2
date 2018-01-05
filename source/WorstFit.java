@@ -3,9 +3,9 @@ import java.util.List;
 
 public class WorstFit extends AbstractBP
 {
-    public WorstFit(int binSize, List<Integer> itemsSizes)
+    public WorstFit(int binSize, List<Item> items)
     {
-        super(binSize, itemsSizes);
+        super(binSize, items);
     }
 
     public void run() throws Exception

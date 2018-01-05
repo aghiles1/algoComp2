@@ -2,51 +2,35 @@ import java.util.List;
 
 public class FirstFit extends AbstractBP
 {
-    public FirstFit(int binSize, List<Integer> itemsSizes)
+    public FirstFit(int binSize, List<Item> items)
     {
-        super(binSize, itemsSizes);
+        super(binSize, items);
     }
 
-    private int getIndexToSet(int currentItemSize)
+    private Bin getFirstBin(Item item) throws ItemsSizeException
     {
         for(int i = 0; i < bins.size(); i++)
         {
-            int currentSize = bins.get(i);
-
-            if(currentItemSize + currentSize <= binSize)
+            if(bins.get(i).canAddItem(item))
             {
-                return i;
+                return bins.get(i);
             }
         }
 
-        return -1;
+        Bin bin = new Bin(binSize);
+        bins.add(bin);
+
+        return bin;
     }
 
     @Override
     public void run() throws Exception
     {
-        bins.add(0);
-
-        for(int i = 0; i < itemsSizes.size(); i++)
+        for(int i = 0; i < items.size(); i++)
         {
-            int currentItemSize = itemsSizes.get(i);
-
-            if(currentItemSize > binSize)
-            {
-                throw new ItemsSizeException();
-            }
-
-            int binIndex = getIndexToSet(currentItemSize);
-
-            if(binIndex == -1)
-            {
-                binIndex = bins.size();
-                bins.add(0);
-            }
-
-            int newSize = bins.get(binIndex) + currentItemSize;
-
-            bins.set(binIndex, newSize);
+            Item item = items.get(i);
+            Bin firstBin = getFirstBin(item);
+            firstBin.addItem(item);
         }
     }
 }
