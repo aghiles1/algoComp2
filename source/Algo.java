@@ -40,6 +40,7 @@ public class Algo
         algos.add(new NextFit(binSize , items));
         algos.add(new FirstFit(binSize , items));
         algos.add(new BestFit(binSize , items));
+        algos.add(new WorstFit(binSize, items));
 
         runAndSave("exemples/output100.txt", items, binSize, algos);
     }
