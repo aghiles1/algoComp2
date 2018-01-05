@@ -24,15 +24,14 @@ public class Algo
 
         List<Item> items = new ArrayList<>();
 
-        items.add(new Item(50, 1));
-        items.add(new Item(70, 2));
-        items.add(new Item(50, 3));
-        items.add(new Item(20, 4));
-        items.add(new Item(40, 5));
-        items.add(new Item(20, 6));
-        items.add(new Item(50, 7));
-        items.add(new Item(10, 8));
-        items.add(new Item(60, 9));
+        items.add(new Item(80, 1));
+        items.add(new Item(91, 2));
+        items.add(new Item(50, 4));
+        items.add(new Item(85, 5));
+        items.add(new Item(3, 6));
+        items.add(new Item(8, 7));
+        items.add(new Item(30, 8));
+        items.add(new Item(9, 8));
 
         int binSize = 100;
 
@@ -40,6 +39,7 @@ public class Algo
 
         algos.add(new NextFit(binSize , items));
         algos.add(new FirstFit(binSize , items));
+        algos.add(new BestFit(binSize , items));
 
         runAndSave("exemples/output100.txt", items, binSize, algos);
     }
