@@ -2,9 +2,9 @@ import java.util.List;
 
 public class BestFit extends AbstractBP
 {
-    public BestFit(int binSize, List<Integer> itemsSizes)
+    public BestFit(int binSize, List<Item> items)
     {
-        super(binSize, itemsSizes);
+        super(binSize, items);
     }
 
 

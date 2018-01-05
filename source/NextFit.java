@@ -3,9 +3,9 @@ import java.util.List;
 
 public class NextFit extends AbstractBP
 {
-    public NextFit(int binSize, List<Integer> itemsSizes)
+    public NextFit(int binSize, List<Item> items)
     {
-        super(binSize, itemsSizes);
+        super(binSize, items);
     }
 
 
@@ -14,22 +14,24 @@ public class NextFit extends AbstractBP
      * @throws Exception
      */
     @Override
-    public void run() throws Exception {
-        bins = new ArrayList<>();
-        bins.add(0);
-        for (int i=0;i < itemsSizes.size(); i++){
-            if (binSize < itemsSizes.get(i)){
-                throw new ItemsSizeException();
-            }
-            if (bins.get(bins.size()-1) + itemsSizes.get(i) <= binSize){
-                bins.set(bins.size()-1,bins.get(bins.size()-1)+itemsSizes.get(i));
-            }else{
-                bins.add(0);
-                bins.set(bins.size()-1,bins.get(bins.size()-1)+itemsSizes.get(i));
+    public void run() throws Exception
+    {
+        for (int i = 0; i < items.size(); i++)
+        {
+            Item item = items.get(i);
+            Bin bin = bins.get(bins.size() - 1);
+
+            if (bin.canAddItem(item))
+            {
+                bin.addItem(item);
             }
 
+            else
+            {
+                bin = new Bin(binSize);
+                bins.add(bin);
+                bin.addItem(item);
+            }
         }
-
     }
-
 }
