@@ -59,14 +59,12 @@ public class Bin
     {
         String string = "[" + capacity + ", {";
 
-        for (int i = 0; i < items.size()-1; i++)
+        for (Item item : items)
         {
-            String itemId = "n°" + items.get(i).getId();
-            string += itemId + ":" + items.get(i).getSize() + "  ";
+            string += "n°" + item.getId() + ":" + item.getSize() + " ";
         }
 
-        string += "n°" + items.get(items.size() - 1).getId();
-        string += ":" + items.get(items.size() - 1).getSize() + "}]";
+        string += "}]";
 
         return string;
     }
