@@ -32,8 +32,11 @@ public class AlmostWorst extends AbstractBP
         return b2;
     }
 
+    @Override
     public void run() throws Exception
     {
+        reset(binSize, items);
+
         long debut = System.nanoTime();
         boolean firsTime = true;
         for(Item item : items){

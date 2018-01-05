@@ -44,8 +44,11 @@ public class BestFit extends AbstractBP
         return bins.get(minIndex);
     }
 
+    @Override
     public void run() throws Exception
     {
+        reset(binSize, items);
+
         long debut = System.nanoTime();
         for(int i = 0; i < items.size(); i++)
         {

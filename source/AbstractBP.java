@@ -12,6 +12,11 @@ public abstract class AbstractBP
 
     public AbstractBP(int binSize, List<Item> items)
     {
+        reset(binSize, items);
+    }
+
+    public void reset(int binSize, List<Item> items)
+    {
         this.binSize = binSize;
         this.items = new ArrayList<>(items);
         bins = new ArrayList<>();

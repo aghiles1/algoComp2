@@ -27,8 +27,11 @@ public class WorstFit extends AbstractBP
         return b;
     }
 
+    @Override
     public void run() throws Exception
     {
+        reset(binSize, items);
+
         long debut = System.nanoTime();
         for(Item item : items){
             Bin worstBin = getWorstBin(item);

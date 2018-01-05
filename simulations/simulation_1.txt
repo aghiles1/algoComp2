@@ -1,0 +1,53 @@
+Max capacity of the bins : 10
+
+Item n°1 : 5
+Item n°2 : 8
+Item n°3 : 6
+Item n°4 : 0
+Item n°5 : 0
+
+NextFit : Size = 3
+
+[5, {n°1:5 }]
+[8, {n°2:8 }]
+[6, {n°3:6 n°4:0 n°5:0 }]
+
+time = 0.033999 ms
+
+
+FirstFit : Size = 3
+
+[5, {n°1:5 n°4:0 n°5:0 }]
+[8, {n°2:8 }]
+[6, {n°3:6 }]
+
+time = 0.029757 ms
+
+
+BestFit : Size = 3
+
+[5, {n°1:5 }]
+[8, {n°2:8 n°4:0 n°5:0 }]
+[6, {n°3:6 }]
+
+time = 0.033963 ms
+
+
+WorstFit : Size = 3
+
+[5, {n°1:5 n°4:0 n°5:0 }]
+[8, {n°2:8 }]
+[6, {n°3:6 }]
+
+time = 0.046999 ms
+
+
+AlmostWorst : Size = 3
+
+[5, {n°1:5 n°4:0 n°5:0 }]
+[8, {n°2:8 }]
+[6, {n°3:6 }]
+
+time = 0.039837 ms
+
+

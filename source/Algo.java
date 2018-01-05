@@ -82,8 +82,10 @@ public class Algo
                 text += "Exception : " + ex.getMessage() + "\n";
             }
         }
+
+        text += "\n\n";
+
         bufWriter.write(text);
-        System.out.println(text);
         bufWriter.close();
         fileWriter.close();
     }

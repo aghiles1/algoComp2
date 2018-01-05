@@ -17,6 +17,8 @@ public class NextFit extends AbstractBP
     @Override
     public void run() throws Exception
     {
+        reset(binSize, items);
+
         long debut = System.nanoTime();
         for (int i = 0; i < items.size(); i++)
         {
