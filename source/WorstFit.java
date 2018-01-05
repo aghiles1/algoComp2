@@ -10,7 +10,7 @@ public class WorstFit extends AbstractBP
 
     private Bin getWorstBin(Item item) throws ItemsSizeException
     {
-        int worst = 0;
+        int worst = -1;
         Bin b = null;
         for(Bin bibi : bins){
             if(binSize - (bibi.getCapacity() + item.getSize()) > worst){
