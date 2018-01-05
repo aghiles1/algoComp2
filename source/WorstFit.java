@@ -29,9 +29,11 @@ public class WorstFit extends AbstractBP
 
     public void run() throws Exception
     {
+        long debut = System.nanoTime();
         for(Item item : items){
             Bin worstBin = getWorstBin(item);
             worstBin.addItem(item);
         }
+        time = (System.nanoTime() - debut)/NSTOMS;
     }
 }

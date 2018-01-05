@@ -34,6 +34,7 @@ public class AlmostWorst extends AbstractBP
 
     public void run() throws Exception
     {
+        long debut = System.nanoTime();
         boolean firsTime = true;
         for(Item item : items){
             if(firsTime){
@@ -44,5 +45,6 @@ public class AlmostWorst extends AbstractBP
                 worstBin.addItem(item);
             }
         }
+        time = (System.nanoTime()-debut)/NSTOMS;
     }
 }

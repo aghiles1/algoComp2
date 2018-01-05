@@ -74,6 +74,7 @@ public class Algo
                 {
                     text += bin + "\n";
                 }
+                text += "\ntime = " + currentAlgo.time + " ms\n";
             }
 
             catch (Exception ex)
@@ -81,9 +82,8 @@ public class Algo
                 text += "Exception : " + ex.getMessage() + "\n";
             }
         }
-
         bufWriter.write(text);
-
+        System.out.println(text);
         bufWriter.close();
         fileWriter.close();
     }

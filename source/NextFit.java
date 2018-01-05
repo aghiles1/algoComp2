@@ -11,11 +11,13 @@ public class NextFit extends AbstractBP
 
     /**
      * complexité : o(n) ou n est la taille de itemsSizes
+     * dés qu'on peut pas mettre un item dans un bin on passe au bin suivant ect...
      * @throws Exception
      */
     @Override
     public void run() throws Exception
     {
+        long debut = System.nanoTime();
         for (int i = 0; i < items.size(); i++)
         {
             Item item = items.get(i);
@@ -33,5 +35,6 @@ public class NextFit extends AbstractBP
                 bin.addItem(item);
             }
         }
+        time = (System.nanoTime() - debut)/NSTOMS;
     }
 }

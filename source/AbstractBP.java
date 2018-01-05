@@ -7,6 +7,8 @@ public abstract class AbstractBP
     protected int binSize;
     protected List<Bin> bins;
     protected List<Item> items;
+    protected double time;
+    protected static double NSTOMS = 1000000.0;
 
     public AbstractBP(int binSize, List<Item> items)
     {

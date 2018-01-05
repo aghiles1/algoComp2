@@ -26,11 +26,13 @@ public class FirstFit extends AbstractBP
     @Override
     public void run() throws Exception
     {
+        long debut = System.nanoTime();
         for(int i = 0; i < items.size(); i++)
         {
             Item item = items.get(i);
             Bin firstBin = getFirstBin(item);
             firstBin.addItem(item);
         }
+        time = (System.nanoTime() - debut)/NSTOMS;
     }
 }
