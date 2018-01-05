@@ -23,6 +23,8 @@ public class AlmostWorst extends AbstractBP
         }
 
         if(b2 == null){
+            if(b != null)
+                return b;
             b2 = new Bin(binSize);
             bins.add(b2);
         }
