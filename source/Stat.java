@@ -60,6 +60,27 @@ public class Stat
                 results.add(new Node(algo, currentSize, currentTime));
             }
 
+            Sort sort = new Sort(results);
+
+            List<Node> efficients = sort.getByEffectiveness();
+            List<Node> timeSpeed = sort.getByTime();
+
+            System.out.println("Efficacité :");
+
+            for(Node node : efficients)
+            {
+                System.out.println(node.algorithm.getName());
+            }
+
+            System.out.println("\nTemps :");
+
+            for(Node node : timeSpeed)
+            {
+                System.out.println(node.algorithm.getName());
+            }
+
+            System.out.println("\n");
+
             saveSimulation("simulations/histograms", (i+1), results);
         }
     }
