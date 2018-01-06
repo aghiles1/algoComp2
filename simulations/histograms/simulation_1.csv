@@ -1,6 +1,6 @@
 Algorithm,Number of bins,Execution time (10^-5 s)
-NextFit,186,67
-FirstFit,148,151
-BestFit,147,147
-WorstFit,159,151
-AlmostWorst,154,136
+NextFit,1,27609
+FirstFit,1,17502
+BestFit,1,17399
+WorstFit,1,20482
+AlmostWorst,1,20065

@@ -56,7 +56,7 @@ public class Stat
             for(AbstractBP algo : algorithms)
             {
                 int currentSize = algo.getBins().size();
-                int currentTime = (int) (algo.time * 100);
+                int currentTime =(int) (algo.time * 1000000);
                 results.add(new Node(algo, currentSize, currentTime));
             }
 
@@ -71,7 +71,7 @@ public class Stat
         FileWriter fileWriter = new FileWriter(System.getProperties().get("user.dir") + "/" + fileName);
         BufferedWriter bufWriter = new BufferedWriter(fileWriter);
 
-        String text = "Algorithm,Number of bins,Execution time (10^-5 s)\n";
+        String text = "Algorithm,Number of bins,Execution time (Ns)\n";
 
         for(Node node : results)
         {
