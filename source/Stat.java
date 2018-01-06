@@ -1,3 +1,6 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -35,53 +38,50 @@ public class Stat
         algorithms.add(new WorstFit(0, new ArrayList<>()));
         algorithms.add(new AlmostWorst(0, new ArrayList<>()));
 
-        if(!algorithms.isEmpty())
+        for(int i = 0; i < numberOfSimulations; i++)
         {
-            for(int i = 0; i < numberOfSimulations; i++)
+            List<Item> items = generator.createItems();
+
+            for(AbstractBP algo : algorithms)
             {
-                List<Item> items = generator.createItems();
-
-                for(AbstractBP algo : algorithms)
-                {
-                    algo.reset(maxCapacity, items);
-                }
-
-                Algo.runAndSave("simulations/simulation_" + (i+1) + ".txt", items, maxCapacity, algorithms);
-
-                int minBinSize = algorithms.get(0).getBins().size();
-                double minTime = algorithms.get(0).time;
-
-                int mostEfficientAlgoIndex = 0;
-                int fastestAlgoIndex = 0;
-
-                for(int j = 1; j < algorithms.size(); j++)
-                {
-                    AbstractBP algo = algorithms.get(j);
-
-                    int currentSize = algo.getBins().size();
-                    double currentTime = algo.time;
-
-                    if(minBinSize > currentSize)
-                    {
-                        minBinSize = currentSize;
-                        mostEfficientAlgoIndex = j;
-                    }
-
-                    if(minTime > currentTime)
-                    {
-                        minTime = currentTime;
-                        fastestAlgoIndex = j;
-                    }
-                }
-
-                AbstractBP mostEfficientAlgo = algorithms.get(mostEfficientAlgoIndex);
-                AbstractBP fastestAlgo = algorithms.get(fastestAlgoIndex);
-
-                System.out.println("Simulation n°" + (i+1) + " :");
-                System.out.println("Most efficient algorithm = " + mostEfficientAlgo.getName());
-                System.out.println("Fastest algorithm = " + fastestAlgo.getName());
-                System.out.println();
+                algo.reset(maxCapacity, items);
             }
+
+            Algo.runAndSave("simulations/traces/simulation_" + (i+1) + ".txt", items, maxCapacity, algorithms);
+
+            System.out.println("Simulation n°" + (i+1) + " :\n");
+
+            List<Node> results = new ArrayList<>();
+
+            for(AbstractBP algo : algorithms)
+            {
+                int currentSize = algo.getBins().size();
+                int currentTime = (int) (algo.time * 100);
+                results.add(new Node(algo, currentSize, currentTime));
+            }
+
+            saveSimulation("simulations/histograms", (i+1), results);
         }
+    }
+
+    public static void saveSimulation(String relativeDirectory, int idSimulation, List<Node> results) throws IOException
+    {
+        String fileName = relativeDirectory + "/simulation_" + idSimulation + ".csv";
+
+        FileWriter fileWriter = new FileWriter(System.getProperties().get("user.dir") + "/" + fileName);
+        BufferedWriter bufWriter = new BufferedWriter(fileWriter);
+
+        String text = "Algorithm,Number of bins,Execution time (10^-5 s)\n";
+
+        for(Node node : results)
+        {
+            text += node.algorithm.getName() + ",";
+            text += node.numberOfBins + ",";
+            text += node.time + "\n";
+        }
+
+        bufWriter.write(text);
+        bufWriter.close();
+        fileWriter.close();
     }
 }
