@@ -1,18 +1,13 @@
 
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.plot.PiePlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.data.general.DefaultPieDataset;
 public class Chart {
     public void createChar(List<Node> algos,int simulation){
         DefaultCategoryDataset datasetbin = new DefaultCategoryDataset();
