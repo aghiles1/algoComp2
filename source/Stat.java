@@ -69,7 +69,7 @@ public class Stat
             saveSimulation("simulations/histograms", (i+1), results);
         }
 
-        saveSimulation("simulations/histograms/globalHistogram", simulationsStats.getAverage());
+        saveSimulation("simulations/histograms/globalHistogram.csv", simulationsStats.getAverage());
     }
 
     public static void saveSimulation(String relativeDirectory, int idSimulation, List<Node> results) throws IOException
