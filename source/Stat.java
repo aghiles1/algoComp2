@@ -81,28 +81,14 @@ public class Stat
 
             System.out.println("\n");
 
-            saveSimulation("simulations/histograms", (i+1), results);
+            saveSimulation((i+1), results);
         }
     }
 
-    public static void saveSimulation(String relativeDirectory, int idSimulation, List<Node> results) throws IOException
+    public static void saveSimulation(int idSimulation, List<Node> results) throws IOException
     {
-        String fileName = relativeDirectory + "/simulation_" + idSimulation + ".csv";
+        Chart chart = new Chart();
+        chart.createChar(results, idSimulation);
 
-        FileWriter fileWriter = new FileWriter(System.getProperties().get("user.dir") + "/" + fileName);
-        BufferedWriter bufWriter = new BufferedWriter(fileWriter);
-
-        String text = "Algorithm,Number of bins,Execution time (Ns)\n";
-
-        for(Node node : results)
-        {
-            text += node.algorithm.getName() + ",";
-            text += node.numberOfBins + ",";
-            text += node.time + "\n";
-        }
-
-        bufWriter.write(text);
-        bufWriter.close();
-        fileWriter.close();
     }
 }
