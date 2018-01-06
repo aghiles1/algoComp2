@@ -38,6 +38,8 @@ public class Stat
         algorithms.add(new WorstFit(0, new ArrayList<>()));
         algorithms.add(new AlmostWorst(0, new ArrayList<>()));
 
+        SimulationsStats simulationsStats = new SimulationsStats(algorithms);
+
         for(int i = 0; i < numberOfSimulations; i++)
         {
             List<Item> items = generator.createItems();
@@ -60,29 +62,14 @@ public class Stat
                 results.add(new Node(algo, currentSize, currentTime));
             }
 
-            Sort sort = new Sort(results);
-
-            List<Node> efficients = sort.getByEffectiveness();
-            List<Node> timeSpeed = sort.getByTime();
-
-            System.out.println("Efficacité :");
-
-            for(Node node : efficients)
-            {
-                System.out.println(node.algorithm.getName());
-            }
-
-            System.out.println("\nTemps :");
-
-            for(Node node : timeSpeed)
-            {
-                System.out.println(node.algorithm.getName());
-            }
+            simulationsStats.addNewSimulation(results);
 
             System.out.println("\n");
 
             saveSimulation((i+1), results);
         }
+
+        saveSimulation(0, simulationsStats.getAverage());
     }
 
     public static void saveSimulation(int idSimulation, List<Node> results) throws IOException
