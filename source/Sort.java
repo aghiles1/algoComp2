@@ -1,13 +1,26 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Sort
 {
-    private List<AbstractBP> algorithms;
+    private List<Node> nodes;
 
-    public Sort(List<AbstractBP> algorithms)
+    public Sort(List<Node> nodes)
     {
-        this.algorithms = algorithms;
+        this.nodes = nodes;
+    }
 
+    public List<Node> getByTime()
+    {
+        List<Node> result = new ArrayList<>();
 
+        return result;
+    }
+
+    public List<Node> getByEffectiveness()
+    {
+        List<Node> result = new ArrayList<>();
+
+        return result;
     }
 }
