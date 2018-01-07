@@ -11,6 +11,7 @@ public class Generator
         this.binSize = binSize;
         this.numberOfItems = numberOfItems;
         this.generator = RandomNumberGenerator.getGeneratorFromId(generator);
+        this.generator.getParam();
     }
 
     public List<Item> createItems()
@@ -19,7 +20,7 @@ public class Generator
 
         int value;
         Random random = new Random();
-        generator.getParam();
+
         //RandomNumberGenerator random = RandomNumberGenerator.Geometric;
 
 
@@ -32,7 +33,7 @@ public class Generator
                 value = generator.getRandom();
             }while (value < 0 || value > binSize);
 
-            System.out.println(value);
+            //System.out.println(value);
             items.add(new Item(value, i+1));
         }
 
