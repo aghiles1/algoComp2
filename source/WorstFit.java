@@ -44,15 +44,15 @@ public class WorstFit extends AbstractBP
         Queue<Bin> heap = new PriorityQueue<Bin>(new Comparator<Bin>() {
             @Override
             public int compare(Bin o1, Bin o2) {
-                return Integer.compare(o1.getCapacity(), o2.getCapacity());
+                return Integer.compare(o2.getFreeSpace(), o1.getFreeSpace());
             }
         });
 
-        Bin b = null;
+        Bin b;
         for(Item item : items){
-            if(!heap.isEmpty())
-                b = heap.peek();
+            b = heap.poll();
             if(b != null && b.getFreeSpace() < item.getSize()){
+                heap.offer(b);
                 b = null;
             }
             if(b == null){
@@ -60,14 +60,8 @@ public class WorstFit extends AbstractBP
                 bins.add(b);
             }
             b.addItem(item);
-            heap.add(b);
+            heap.offer(b);
         }
-/*
-        System.out.println("1234");
-        while(!heap.isEmpty()){
-            System.out.println("5678");
-            System.out.println(heap.remove());
-        }*/
         time = (System.nanoTime() - debut)/NSTOMS;
     }
 }

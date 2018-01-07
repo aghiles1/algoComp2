@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Bin
+public class Bin implements Comparable<Bin>
 {
     private int maxCapacity;
     private int capacity;
@@ -71,5 +71,10 @@ public class Bin
         string += "}]";
 
         return string;
+    }
+
+    @Override
+    public int compareTo(Bin o) {
+        return Integer.compare(getFreeSpace(), o.getFreeSpace());
     }
 }
