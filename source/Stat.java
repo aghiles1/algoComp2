@@ -28,7 +28,17 @@ public class Stat
 
         int numberOfSimulations = scanner.nextInt();
 
-        Generator generator = new Generator(maxCapacity, numberOfItems);
+        System.out.println("Loi de probabilité utilisée pour la génération des items");
+        System.out.println("0 - Poisson");
+        System.out.println("1 - Exponnentielle");
+        System.out.println("2 - Geometrique");
+        System.out.println("3 - Uniforme");
+        System.out.println("4 - Constante");
+        System.out.println("5 - Normale");
+        System.out.println("Tapez un chiffre :");
+        int numberGenerator = scanner.nextInt();
+
+        Generator generator = new Generator(maxCapacity, numberOfItems, numberGenerator);
 
         List<AbstractBP> algorithms = new ArrayList<>();
 
