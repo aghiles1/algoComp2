@@ -14,31 +14,36 @@ public class Stat
      */
     public static void main(String[] args) throws Exception
     {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Enter the max capacities of the bins : ");
-
-        int maxCapacity = scanner.nextInt();
-
-        System.out.println("Enter the number of items : ");
-
-        int numberOfItems = scanner.nextInt();
-
-        System.out.println("Enter the number of simulations : ");
-
-        int numberOfSimulations = scanner.nextInt();
-
-        System.out.println("Loi de probabilité utilisée pour la génération des items");
-        System.out.println("0 - Poisson");
-        System.out.println("1 - Exponnentielle");
-        System.out.println("2 - Geometrique");
-        System.out.println("3 - Uniforme");
-        System.out.println("4 - Constante");
-        System.out.println("5 - Normale");
-        System.out.println("Tapez un chiffre :");
-        int numberGenerator = scanner.nextInt();
-
-        Generator generator = new Generator(maxCapacity, numberOfItems, numberGenerator);
+        int maxCapacity = 0;
+        int numberOfItems = 0;
+        int numberOfSimulations = 0;
+        int numberGenerator = 0;
+        Generator generator = null;
+        try {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Enter the max capacities of the bins : ");
+            maxCapacity = scanner.nextInt();
+            System.out.println("Enter the number of items : ");
+            numberOfItems = scanner.nextInt();
+            System.out.println("Enter the number of simulations : ");
+            numberOfSimulations = scanner.nextInt();
+            System.out.println("Loi de probabilité utilisée pour la génération des items");
+            System.out.println("0 - Poisson");
+            System.out.println("1 - Exponnentielle");
+            System.out.println("2 - Geometrique");
+            System.out.println("3 - Uniforme");
+            System.out.println("4 - Constante");
+            System.out.println("5 - Normale");
+            System.out.println("Tapez un chiffre :");
+            numberGenerator = scanner.nextInt();
+            while (numberGenerator > 5 || numberGenerator < 0) {
+                System.out.println("Selectionner parmis les lois proposées de 0 à 6");
+                numberGenerator = scanner.nextInt();
+            }
+            generator = new Generator(maxCapacity, numberOfItems, numberGenerator);
+        }catch (Exception e){
+            throw new NumberException("Integer");
+        }
 
         List<AbstractBP> algorithms = new ArrayList<>();
 

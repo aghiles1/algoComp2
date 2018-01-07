@@ -7,49 +7,12 @@ public class AlmostWorst extends AbstractBP
         super(binSize, items);
     }
 
-    private Bin getAlmostWorstBin(Item item) throws ItemsSizeException
-    {
-        int worst = -1;
-        int almostWorst = -1;
-        Bin b = null;
-        Bin b2 = null;
-        for(Bin bibi : bins){
-            if(binSize - (bibi.getCapacity() + item.getSize()) > worst){
-                almostWorst = worst;
-                worst = binSize - (bibi.getCapacity() + item.getSize());
-                b2 = b;
-                b = bibi;
-            }
-        }
-
-        if(b2 == null){
-            if(b != null)
-                return b;
-            b2 = new Bin(binSize);
-            bins.add(b2);
-        }
-
-        return b2;
-    }
-
     @Override
     public void run() throws Exception
     {
         reset(binSize, items);
 
         long debut = System.nanoTime();
-
-        /*
-        boolean firsTime = true;
-        for(Item item : items){
-            if(firsTime){
-                bins.get(0).addItem(item);
-                firsTime = false;
-            }else {
-                Bin worstBin = getAlmostWorstBin(item);
-                worstBin.addItem(item);
-            }
-        }*/
 
         bins = new ArrayList<>();
         Queue<Bin> heap = new PriorityQueue<Bin>(new Comparator<Bin>() {
