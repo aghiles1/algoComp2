@@ -44,6 +44,9 @@ public class Algo
         algos.add(new AlmostWorst(binSize, items));
 
         runAndSave("exemples/output100.txt", items, binSize, algos);
+        runAndSave("exemples/output500.txt", items, binSize, algos);
+        runAndSave("exemples/output1000.txt", items, binSize, algos);
+
     }
 
     public static void runAndSave(String fileName, List<Item> items, int binSize, List<AbstractBP> algos) throws IOException
@@ -77,8 +80,7 @@ public class Algo
                 text += "\ntime = " + currentAlgo.time + " ms\n";
             }
 
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 text += "Exception : " + ex.getMessage() + "\n";
             }
         }
@@ -89,4 +91,5 @@ public class Algo
         bufWriter.close();
         fileWriter.close();
     }
+
 }

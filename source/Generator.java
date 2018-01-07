@@ -6,8 +6,7 @@ public class Generator
     private int numberOfItems;
     private RandomNumberGenerator generator;
 
-    public Generator(int binSize, int numberOfItems, int generator)
-    {
+    public Generator(int binSize, int numberOfItems, int generator) throws NumberException {
         this.binSize = binSize;
         this.numberOfItems = numberOfItems;
         this.generator = RandomNumberGenerator.getGeneratorFromId(generator);
@@ -43,9 +42,14 @@ public class Generator
     private enum RandomNumberGenerator {
         Poisson(0){
             @Override
-            public void getParam(){
+            public void getParam() throws NumberException {
                 System.out.println("lambda ? ");
-                lambda = scanner.nextDouble();
+                try {
+                    lambda = scanner.nextDouble();
+                }catch (Exception e){
+                    throw new NumberException("Double");
+                }
+
             }
 
             @Override
@@ -64,9 +68,13 @@ public class Generator
         Exponential(1){
             //OK
             @Override
-            public void getParam(){
+            public void getParam() throws NumberException {
                 System.out.println("lambda ? ");
+                try {
                 lambda = scanner.nextDouble();
+                }catch (Exception e){
+                    throw new NumberException("Double");
+                }
             }
             @Override
             public int getRandom(){
@@ -77,9 +85,13 @@ public class Generator
         Geometric(2){
             //OK
             @Override
-            public void getParam(){
+            public void getParam() throws NumberException {
                 System.out.println("probabilité ? ");
+                try{
                 proba = scanner.nextDouble();
+                }catch (Exception e){
+                    throw new NumberException("Double");
+                }
             }
             @Override
             public int getRandom(){
@@ -89,11 +101,15 @@ public class Generator
         },
         Uniform(3){
             @Override
-            public void getParam(){
+            public void getParam() throws NumberException {
+                try{
                 System.out.println("borne inf ? ");
                 a = scanner.nextDouble();
                 System.out.println("borne sup ? ");
                 b = scanner.nextDouble();
+                }catch (Exception e){
+                    throw new NumberException("Double");
+                }
             }
             @Override
             public int getRandom(){
@@ -102,9 +118,13 @@ public class Generator
         },
         Constant(4){
             @Override
-            public void getParam(){
+            public void getParam() throws NumberException {
                 System.out.println("constante ?");
+                try{
                 constant = scanner.nextInt();
+                }catch (Exception e){
+                    throw new NumberException("Intger");
+                }
             }
             @Override
             public int getRandom(){
@@ -113,11 +133,15 @@ public class Generator
         },
         Gaussian(5){
             @Override
-            public void getParam(){
+            public void getParam() throws NumberException {
+                try{
                 System.out.println("moyenne ? ");
                 mean = scanner.nextDouble();
                 System.out.println("variance ? ");
                 deviation = scanner.nextDouble();
+                }catch (Exception e){
+                    throw new NumberException("Double");
+                }
             }
             @Override
             public int getRandom(){
@@ -143,7 +167,7 @@ public class Generator
             return null;
         }
 
-        public void getParam(){
+        public void getParam() throws NumberException {
 
         }
         public int getRandom(){
