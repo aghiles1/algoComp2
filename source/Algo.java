@@ -16,34 +16,47 @@ public class Algo
      */
     public static void main(String[] args) throws Exception
     {
-/*
-        Parser parser = new Parser("exemples/exemple100.txt");
+        List<String> filesToLoad = new ArrayList<>();
 
-        int binSize = parser.getBinSize();
-        List<Item> items = parser.getItems();*/
+        filesToLoad.add("exemple100.txt");
+        filesToLoad.add("exemple500.txt");
+        filesToLoad.add("exemple1000.txt");
+        filesToLoad.add("monexemple.txt");
 
-        List<Item> items = new ArrayList<>();
+        for(String file : filesToLoad)
+        {
+            try
+            {
+                Parser parser = new Parser("exemples/" + file);
 
-        items.add(new Item(80, 1));
-        items.add(new Item(91, 2));
-        items.add(new Item(50, 4));
-        items.add(new Item(85, 5));
-        items.add(new Item(3, 6));
-        items.add(new Item(8, 7));
-        items.add(new Item(30, 8));
-        items.add(new Item(9, 8));
+                int binSize = parser.getBinSize();
+                List<Item> items = parser.getItems();
 
-        int binSize = 100;
+                List<AbstractBP> algos = new ArrayList<>();
 
-        List<AbstractBP> algos = new ArrayList<>();
+                algos.add(new NextFit(binSize , items));
+                algos.add(new FirstFit(binSize , items));
+                algos.add(new BestFit(binSize , items));
+                algos.add(new WorstFit(binSize, items));
+                algos.add(new AlmostWorst(binSize, items));
 
-        algos.add(new NextFit(binSize , items));
-        algos.add(new FirstFit(binSize , items));
-        algos.add(new BestFit(binSize , items));
-        algos.add(new WorstFit(binSize, items));
-        algos.add(new AlmostWorst(binSize, items));
+                String outputFileName = file.replace("exemple", "output");
 
-        runAndSave("exemples/output100.txt", items, binSize, algos);
+                if(file.contains("monexemple"))
+                {
+                    outputFileName = "outputMonExemple.txt";
+                }
+
+                runAndSave("exemples/" + outputFileName, items, binSize, algos);
+
+                System.out.println("Created " + System.getProperties().get("user.dir") + "/exemples/" + file);
+            }
+
+            catch (IOException ex)
+            {
+                System.out.println("Unable to read the file " + System.getProperties().get("user.dir") + "/exemples/" + file);
+            }
+        }
     }
 
     public static void runAndSave(String fileName, List<Item> items, int binSize, List<AbstractBP> algos) throws IOException
