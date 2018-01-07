@@ -37,7 +37,7 @@ public class Stat
             System.out.println("Tapez un chiffre :");
             numberGenerator = scanner.nextInt();
             while (numberGenerator > 5 || numberGenerator < 0) {
-                System.out.println("selectionner parmis les loi proposé de 0 à 6");
+                System.out.println("Selectionner parmis les lois proposées de 0 à 6");
                 numberGenerator = scanner.nextInt();
             }
             generator = new Generator(maxCapacity, numberOfItems, numberGenerator);
