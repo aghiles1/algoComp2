@@ -49,6 +49,10 @@ public class Bin
         return capacity;
     }
 
+    public int getFreeSpace(){
+        return maxCapacity - capacity;
+    }
+
     public List<Item> getItems()
     {
         return items;
