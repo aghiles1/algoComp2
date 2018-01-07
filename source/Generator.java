@@ -19,16 +19,9 @@ public class Generator
         List<Item> items = new ArrayList<>();
 
         int value;
-        Random random = new Random();
-
-        //RandomNumberGenerator random = RandomNumberGenerator.Geometric;
-
 
         for(int i = 0; i < numberOfItems; i++)
         {
-            //value = random.nextInt(binSize);
-            //System.out.println(random.getRandom(binSize));
-            //value =  random.getRandom(binSize);
             do {
                 value = generator.getRandom();
             }while (value < 0 || value > binSize);
