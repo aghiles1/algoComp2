@@ -48,7 +48,7 @@ public class Algo
 
                 runAndSave("exemples/" + outputFileName, items, binSize, algos);
 
-                System.out.println("Created " + System.getProperties().get("user.dir") + "/exemples/" + file);
+                System.out.println("Created " + System.getProperties().get("user.dir") + "/exemples/" + outputFileName);
             }
 
             catch (IOException ex)
